@@ -49,8 +49,25 @@ void Multmod(int num, int num2, int mod) {
     cout << mult << "mod" << mod << endl;
 }
 
-void Invmod(int num, int mod) {
+int Invmod(int num, int mod) {
+    int q[10];
+    int residuo = mod % num, mod_aux = mod, i = 0;
+    while (residuo >= 1) {
+	   q[i] = (mod_aux - residuo) / num;
+	   mod_aux = num;
+	   num = residuo;
+	   residuo = mod_aux % num;
+	   i++;
+    }
 
+    int p[] = { 0,0,0,0,0,0,0,0,0,0 }; p[0] = 0; p[1] = 1;
+    
+    for (int j = 2; j <= i + 2; j++) {
+	   p[j] = p[j - 2] - (p[j - 1] * q[j - 2]);
+    }
+
+    cout << p[i + 1] << "mod" << mod << endl;
+    return 0;
 }
 
 int main() {
