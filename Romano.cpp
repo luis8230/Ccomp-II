@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void convertir(long x){
+void convertir(long &x){
 	long unidades,decenas,centenas,millares;
 	unidades = x%10; x/=10;
 	decenas = x%10; x/=10;
