@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stdlib.h>
+
 using namespace std;
 
 void Sumamod(int num,int num2,int mod) {
@@ -50,7 +50,7 @@ void Multmod(int num, int num2, int mod) {
 }
 
 int Invmod(int num, int mod) {
-    int q[10];
+    int q[100];
     int residuo = mod % num, mod_aux = mod, i = 0;
     while (residuo >= 1) {
 	   q[i] = (mod_aux - residuo) / num;
@@ -58,9 +58,10 @@ int Invmod(int num, int mod) {
 	   num = residuo;
 	   residuo = mod_aux % num;	
 	   i++;
+	   
     }
 
-    int p[] = { 0,0,0,0,0,0,0,0,0,0 }; p[0] = 0; p[1] = 1;
+    int p[100] ; p[0] = 0; p[1] = 1;
     
     for (int j = 2; j <= i + 2; j++) {
 	   p[j] = p[j - 2] - (p[j - 1] * q[j - 2]);
