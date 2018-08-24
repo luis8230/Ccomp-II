@@ -33,8 +33,7 @@ int main() {
 
     cout << "Ingrese su clave publica: " << endl; cin >> cla_public;
     cla_private=Invmod(cla_public, carac);
-    
 
-
+    system("pause");
     return 0;
 }
