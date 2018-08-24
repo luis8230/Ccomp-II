@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdlib.h>
 using namespace std;
 
 void Sumamod(int num, int num2, int mod) {
