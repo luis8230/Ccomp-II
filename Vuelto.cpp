@@ -69,20 +69,20 @@ void vuelto(double &x){
     } 
     
     //centimos
-    if((decimal < 100 ) && (decimal>=50))
+    if((decimal < 100 ) && (decimal>49))
     {
     	centimos_50 +=1;
     	decimal -=50;
 	}
 	
-	for(decimal;(decimal < 50) && (decimal>=19);)
+	for(decimal;(decimal < 50) && (decimal>19);)
     {
     	centimos_20 +=1;
     	decimal -=20;
 	}
 
 	
-	if((decimal < 20) && (decimal>=10))
+	if((decimal < 20) && (decimal>9))
     {
     	centimos_10 +=1;
     	decimal -=10;
@@ -139,7 +139,7 @@ void vuelto(double &x){
 int main(){
 	
 	double *x;
-	double y=12.20;
+	double y=189.20;
 	x=&y;
 	
 	vuelto(*x);
