@@ -74,17 +74,20 @@ void vuelto(double &x){
     	centimos_50 +=1;
     	decimal -=50;
 	}
-	for(decimal;(decimal < 50) && (decimal>=20);)
+	
+	for(decimal;(decimal < 50) && (decimal>=19);)
     {
     	centimos_20 +=1;
     	decimal -=20;
 	}
+
+	
 	if((decimal < 20) && (decimal>=10))
     {
     	centimos_10 +=1;
     	decimal -=10;
 	}
-
+	
 
 
 	//imprimir
@@ -135,8 +138,8 @@ void vuelto(double &x){
 
 int main(){
 	
-	double *x,y=0;
-	cout<<"Dame un numero: ";cin>>y;
+	double *x;
+	double y=12.20;
 	x=&y;
 	
 	vuelto(*x);
