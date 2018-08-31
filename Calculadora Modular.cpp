@@ -41,32 +41,33 @@ void Multmod(int num, int num2, int mod) {
     cout << mult << "mod" << mod << endl;
 }
 
-int Invmod(int num, int mod) {
-    int q[10];
-    int residuo = mod % num, mod_aux = mod, i = 0;
-    while (residuo >= 1) {
-	   q[i] = (mod_aux - residuo) / num;
-	   mod_aux = num;
-	   num = residuo;
-	   residuo = mod_aux % num;
-	   i++;
+int invm(int a,int b){
+    int r;
+    int r1 =a, r2=b;
+    int s1= 1, s2= 0;
+    int s;
+    int t1=0, t2=1;
+    int t,q;
+    while (r2>0){
+        q = r1/r2;
+        r=r1-(q*r2);
+        r1=r2; r2=r;
+
+        s=s1 - (q*s2);
+        s1=s2; s2=s;
+
+        t= t1-(q*t2);
+        t1=t2; t2=t;
     }
-
-    int p[] = { 0,0,0,0,0,0,0,0,0,0 }; p[0] = 0; p[1] = 1;
-
-    for (int j = 2; j <= i + 2; j++) {
-	   p[j] = p[j - 2] - (p[j - 1] * q[j - 2]);
-	   if (p[j] < 0) {
-		  p[j] = mod + p[j];
-	   }
-	   else if (p[j] > mod) {
-		  p[j]-=mod;
-	    }
+    if(r1!=1){
+        cout<<"no tiene inversa modular"<<endl;
     }
-
-    cout << p[i + 1] << "mod" << mod << endl;
-    return 0;
-}
+    else{
+        int resto = s1+s2;
+        if(resto<0){
+            resto= b + resto;}
+        return resto;}
+    }
 
 int main() {
     int num_1 = 0, num_2 = 0, mod = 0;
@@ -78,7 +79,7 @@ int main() {
     cout << "4. Inverso." << endl;
     cout << "Opcion :  ";
     cin >> opcion;
-    system("cls");
+    //system("cls");
     switch (opcion) {
     case 1:
 	   cout << "Digite el primer numero: "; cin >> num_1;
@@ -104,10 +105,10 @@ int main() {
     case 4:
 	   cout << "Digite un numero: "; cin >> num_1;
 	   cout << "Digite el modulo: "; cin >> mod;
-	   cout << "El inverso es: ";
-	   Invmod(num_1, mod);
+	   cout << "El inverso es: " ;
+	   cout<<invm(num_1, mod);
     }
 
-    system("pause");
+    //system("pause");
     return 0;
 }
