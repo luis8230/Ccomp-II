@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -7,17 +7,17 @@ char vocales[]="aeiou%";
 char consonantes[] = "bcdfghjklmñpqrstvwxyz";
 
 int main() {
-    char palabra[30], respuesta[30];
+    char palabra[30];char respuesta[30];
     cout << "Dame la palabra: ";
     cin >> palabra;
     int size = sizeof(palabra) / sizeof(palabra[0]);
-    char e[] = "-",*p = palabra, *v = vocales;
+    const char e[] = "-";char  *p = palabra, *v = vocales;
     
     for (int i=0; *p != '\0'; p++,i++) {
-	   //strcat(respuesta,palabra[i]);
+	   strncat(respuesta,palabra,1);
 	   for (; *v != '\0'; v++) {
 		  if (*p == *v) {
-			 //strcat();}
+			 strcat(respuesta,e);
 		  }
 		  v = vocales; }
     }
@@ -25,6 +25,5 @@ int main() {
     cout <<"Palabra: "<< palabra << endl;
     cout <<"Separacion: "<< respuesta << endl;
 
-    system("pause");
     return 0;
 }
