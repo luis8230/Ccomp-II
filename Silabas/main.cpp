@@ -3,28 +3,27 @@
 
 using namespace std;
 
-string vocales="aeiou%";
-string consonantes = "bcdfghjklmñpqrstvwxyz";
+char vocales[]="aeiou%";
+char consonantes[] = "bcdfghjklmÃ±pqrstvwxyz";
 
 int main() {
-    string palabra, respuesta;
-    string e = "-",f;
-    string *p = &palabra, *v = &vocales;
+    char palabra[30], respuesta[30];
     cout << "Dame la palabra: ";
-    getline(cin, palabra);
-    f += palabra[palabra.length() - 1];
+    cin >> palabra;
+    int size = sizeof(palabra) / sizeof(palabra[0]);
+    char e[] = "-",*p = palabra, *v = vocales;
     
-    for (;*p!=f;p++) {
-	   respuesta += *p;
-	   for (;*v!="%"; v++) {
+    for (int i=0; *p != '\0'; p++,i++) {
+	   //strcat(respuesta,palabra[i]);
+	   for (; *v != '\0'; v++) {
 		  if (*p == *v) {
-			 respuesta += e;}}
-	   v = &vocales;
+			 //strcat();}
+	   }
+	   v = vocales;
     }
 
     cout <<"Palabra: "<< palabra << endl;
-    cout <<"Separación: "<< respuesta << endl;
+    cout <<"Separacion: "<< respuesta << endl;
 
-    system("pause");
     return 0;
 }
