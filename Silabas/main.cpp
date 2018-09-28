@@ -18,12 +18,13 @@ int main() {
 	   for (; *v != '\0'; v++) {
 		  if (*p == *v) {
 			 //strcat();}
-	   }
-	   v = vocales;
+		  }
+		  v = vocales; }
     }
 
     cout <<"Palabra: "<< palabra << endl;
     cout <<"Separacion: "<< respuesta << endl;
 
+    system("pause");
     return 0;
 }
