@@ -36,28 +36,26 @@ void to_one(double arr[][4], int i) {
 
 void gauss(double arr[][4]) {
     int aux = 0;
-    for (double *i = *arr; aux<3; aux++) {
-	   for (int cont = 0; i < *arr + 12; i += 4, cont++) {
-		  if (*i == *(*(arr + cont) + cont) && *i != 1) {
+    for (double (*i)[4] = arr; aux<3; aux++) {
+	   for (int cont = 0; i < arr + 3; i++, cont++) {
+          if (*(*i+aux) == *(*(arr + cont) + cont) && *(*i+aux) != 1) {
 			 to_one(arr, cont);
 			 imprimir(arr, 12);
 			 continue;
 		  }
 
-		  else if ((*i == *(*(arr + cont) + cont) && *i == 1) || *i == 0) {
+		  else if ((*(*i+aux) == *(*(arr + cont) + cont) && *(*i+aux) == 1) || *(*i+aux) == 0) {
 			 imprimir(arr, 12);
 			 continue;
 		  }
 
-		  operar_fila(arr, 1, cont, *i, 0);
+		  operar_fila(arr, 1, cont, *(*i+aux), 0);
 		  imprimir(arr, 12);
 
 	   }
-	   i = *arr + aux;
+	   i = arr;
     }
 }
-
-
 
 int main() {
     double x = 0, y = 0, z = 0;
@@ -70,10 +68,8 @@ int main() {
 
     if(*(*matriz+11)== 0) {
 	   cout << "La matriz no tiene solucion" << endl;
-	   system("pause");
 	   return 0;
     }
-        
 
     z = *(*matriz + 11);
     y = *(*matriz + 7) - *(*matriz + 6)* z;
@@ -83,9 +79,39 @@ int main() {
     cout << "Y = " << y << endl;
     cout << "Z = " << z << endl;
 
-    system("pause");
     return 0;
 }
+
+
+/*
+{
+    int n = 2, m =3, k= 5;
+
+    int ***Matriz = new int**[n];
+    int MatB [n][m][k];
+
+    for(int i = 0; i<n; i++)
+    {
+         *(Matriz+i) = new int*[m];
+         for(int j=0;j<m;j++)
+            *(*(Matriz+i)+j) = new int[k];
+
+    }
+
+    for(int i=0; i<n;i++)
+    {
+        for(int j=0; j <m; j++)
+        {
+         for(int h=0; h<k;h++)
+           cout<<Matriz[i][j][h]<<" ";
+          cout<<endl;
+        }
+        cout<<endl;
+    }
+
+    return 0;
+}*/
+
 
 
 
