@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void imprimir(double arr[][4],int len) {
+void imprimir(double arr[][4], int len) {
     int cont = 1;
     for (double *i = *arr; i < *arr + len; i++, cont++) {
 	   cout << *i << "  ";
@@ -36,20 +36,20 @@ void to_one(double arr[][4], int i) {
 
 void gauss(double arr[][4]) {
     int aux = 0;
-    for (double (*i)[4] = arr; aux<3; aux++) {
+    for (double(*i)[4] = arr; aux<3; aux++) {
 	   for (int cont = 0; i < arr + 3; i++, cont++) {
-          if (*(*i+aux) == *(*(arr + cont) + cont) && *(*i+aux) != 1) {
+		  if (*(*i + aux) == *(*(arr + cont) + cont) && *(*i + aux) != 1) {
 			 to_one(arr, cont);
 			 imprimir(arr, 12);
 			 continue;
 		  }
 
-		  else if ((*(*i+aux) == *(*(arr + cont) + cont) && *(*i+aux) == 1) || *(*i+aux) == 0) {
+		  else if ((*(*i + aux) == *(*(arr + cont) + cont) && *(*i + aux) == 1) || *(*i + aux) == 0) {
 			 imprimir(arr, 12);
 			 continue;
 		  }
 
-		  operar_fila(arr, 1, cont, *(*i+aux), 0);
+		  operar_fila(arr, 1, cont, *(*i + aux), 0);
 		  imprimir(arr, 12);
 
 	   }
@@ -58,15 +58,21 @@ void gauss(double arr[][4]) {
 }
 
 int main() {
+    int n = 3, m = 4;
     double x = 0, y = 0, z = 0;
-    double matriz[3][4] = { {1,1,1,6},
-						    {2,-1,1,5},
-						    {3,1,-2,9} };
+    double matriz[3][4] = { { 1,1,1,6 },
+    							{ 2,-1,1,5 },
+    							{ 3,1,-2,9 } };
 
-    imprimir(matriz,12);
+    //double **matriz = new double*[n];
+    //for (int i = 0; i<n; i++) {
+	//	  *(matriz + i) = new double[m];
+    //}
+
+    imprimir(matriz, 12);
     gauss(matriz);
 
-    if(*(*matriz+11)== 0) {
+    if (*(*matriz + 11) == 0) {
 	   cout << "La matriz no tiene solucion" << endl;
 	   return 0;
     }
@@ -79,42 +85,10 @@ int main() {
     cout << "Y = " << y << endl;
     cout << "Z = " << z << endl;
 
+    //delete matriz;
+    system("pause");
     return 0;
 }
-
-
-/*
-{
-    int n = 2, m =3, k= 5;
-
-    int ***Matriz = new int**[n];
-    int MatB [n][m][k];
-
-    for(int i = 0; i<n; i++)
-    {
-         *(Matriz+i) = new int*[m];
-         for(int j=0;j<m;j++)
-            *(*(Matriz+i)+j) = new int[k];
-
-    }
-
-    for(int i=0; i<n;i++)
-    {
-        for(int j=0; j <m; j++)
-        {
-         for(int h=0; h<k;h++)
-           cout<<Matriz[i][j][h]<<" ";
-          cout<<endl;
-        }
-        cout<<endl;
-    }
-
-    return 0;
-}*/
-
-
-
-
 
 
 
